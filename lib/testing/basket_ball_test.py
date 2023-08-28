@@ -7,6 +7,7 @@ from basket_ball import (
 
 import io
 import sys
+import textwrap
 
 class TestBasketBall:
     '''Module basket_ball.py'''
@@ -90,4 +91,17 @@ class TestBasketBall:
       sys.stdout = captured_out
       average_rebounds_by_shoe_brand()
       sys.stdout = sys.__stdout__
-      assert(captured_out.getvalue() == "Nike:  4.93\nAdidas:  7.07\nPuma:  8.50\nJordan:  3.80\n")
+
+      expected_output = """\
+Nike: 4.93
+Adidas: 7.07
+Puma: 8.50
+Jordan: 3.80"""
+      actual_output = captured_out.getvalue().strip()
+
+      assert textwrap.dedent(actual_output) == textwrap.dedent(expected_output)
+
+    
+
+
+
